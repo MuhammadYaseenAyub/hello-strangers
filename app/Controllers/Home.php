@@ -11,7 +11,7 @@ class Home extends BaseController
 		//echo $this->request->getIPAddress();
 		//$data['ip'] = $this->request->getIPAddress();//::1=127.0. 0.1
 		echo view("templates/header", $data);
-		echo view('index', $data);
+		echo view('hello', $data);
 		echo view("templates/footer", $data);
 	}
 

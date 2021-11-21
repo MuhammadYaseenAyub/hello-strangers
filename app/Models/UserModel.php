@@ -29,4 +29,11 @@ class UserModel extends Model
         return $builder->get()->getResultArray();
     }
 
+    public function logined_in_members(){
+        $db = \Config\Database::connect();
+        $builder = $db->table('user');
+        $builder->select("*")->where('login_flag',1);
+        return $builder->get()->getResultArray();
+    }
+
 }
