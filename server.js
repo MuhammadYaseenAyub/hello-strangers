@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
 server.listen(3000, () => {
     console.log('Server is running....');
 });*/
-const generateMessage = require('./message');
+const {generateMessage, generateLocationMessage} = require('./message');
 const express = require('express');
 const app = express();
 const socket = require('socket.io');
@@ -51,6 +51,10 @@ io.on('connection', (socket) =>{
             text:message.text,
             createdAt: new Date().getTime()
         });*/
+    });
+
+    socket.on('createLocMsg', (cords)=>{
+        io.emit('newLocMsg', generateLocationMessage('Admin', cords.lat, cords.long));
     });
 
     socket.on('disconnect', () => {
